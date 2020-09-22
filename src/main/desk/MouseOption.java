@@ -1,8 +1,6 @@
 package main.desk;
 
-import main.app.Notepad;
 import main.app.PanelGame;
-import main.app.SunModel;
 
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
@@ -67,17 +65,17 @@ public class MouseOption extends MouseAdapter {
                     }
                     break;
                 case "notebook" :
-                    //调用windows系统自带的notepad
-                        /*try {
+//                    调用windows系统自带的notepad
+                        try {
                             Runtime.getRuntime().exec("notepad");
                         } catch (IOException e) {
                             e.printStackTrace();
-                        }*/
+                        }
                     //调用自个写的一个特简易的记事本程序
                     System.out.println("启动记事本");
-                    Notepad notepad = new Notepad();
-                    parent.getDesktop().add(notepad);
-                    notepad.toFront();
+//                    Notepad notepad = new Notepad();
+//                    parent.getDesktop().add(notepad);
+//                    notepad.toFront();
 
                     break;
                 case "compute" :
@@ -90,12 +88,12 @@ public class MouseOption extends MouseAdapter {
                     break;
                 case "panel" :
                     System.out.println("启动飞机大战游戏");
-                    new PanelGame();
+                    new PanelGame(900,600);
                     break;
 
                 case "sunModel" :
                     System.out.println("启动太阳系模型");
-                    new SunModel();
+//                    new SunModel();
                     break;
             }
 

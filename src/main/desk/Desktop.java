@@ -15,9 +15,10 @@ import java.io.Serializable;
  */
 public class Desktop extends JFrame implements Serializable {
     private JDesktopPane desktop = null;//桌面面板
-    private JLabel background = null;//桌面背景
+    private String bgPath = "/lib/background.jpg";//桌面背景
     private MouseOption mouseOption = new MouseOption(Desktop.this);//鼠标监听对象
-
+    private static int width = 1024;
+    private static int height = 719;
 
     public Desktop(String title){
         super(title);
@@ -26,13 +27,11 @@ public class Desktop extends JFrame implements Serializable {
         Dimension dm = tk.getScreenSize();
         //设置布局管理为BorderLayout
         this.setLayout(new BorderLayout());
-//        int width = (int)dm.getWidth();
-//        int height = (int)dm.getHeight() - 100;
-        this.setSize(680, 480);
+        this.setSize(width, height);
 
         desktop = new JDesktopPane();
         System.out.println("成功启动桌面！");
-        setBackground(680,480,"/lib/background.jpg");
+        setBackground(width,height,bgPath);
 
         setAppButton("notebook","/lib/notebook.jpg",new int[]{20,88,48,38});
 
@@ -59,9 +58,8 @@ public class Desktop extends JFrame implements Serializable {
     public void setDesktop(JDesktopPane desktop) {
         this.desktop = desktop;
     }
-
     public void setBackground(int width,int height,String bgImgUrl) {
-        this.background = new JLabel();
+        JLabel background = new JLabel();
         //创建一个空的图片
         BufferedImage img = new BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);
         Graphics2D g = img.createGraphics();
@@ -76,12 +74,23 @@ public class Desktop extends JFrame implements Serializable {
         g.drawImage(ad,0,0,width,height,null);
         //转化为Icon类图片
         ImageIcon ii = new ImageIcon(img);
-        this.background.setIcon(ii);
+        background.setIcon(ii);
         //设置存放背景图的背景标签的位置和大小
-        this.background.setBounds(new Rectangle(0,0,width,height));
-        desktop.add(this.background,new Integer(Integer.MIN_VALUE));
+        background.setBounds(new Rectangle(0,0,width,height));
+        desktop.add(background,new Integer(Integer.MIN_VALUE));
     }
-
+    public  int getWidth() {
+        return width;
+    }
+    public static void setWidth(int width) {
+        Desktop.width = width;
+    }
+    public  int getHeight() {
+        return height;
+    }
+    public static void setHeight(int height) {
+        Desktop.height = height;
+    }
     public JDesktopPane getDesktop() {
         return this.desktop;
     }

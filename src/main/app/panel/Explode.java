@@ -19,7 +19,7 @@ public class Explode {
     //静态加载图片
     static {
         for (int i = 0; i < images.length; i++) {
-            images[i] = Util.loadImage("/lib/panel/explode/" + i + ".gif ");
+            images[i] = Util.loadImage("/lib/panel/explode_" + i + ".jpg ");
             //避免JAVA的懒加载，让他一用到就可以直接显示，否则可能一开始的两站图看不到
             images[i].getHeight(null);
         }
@@ -28,7 +28,7 @@ public class Explode {
     public Explode(int x, int y, PanelGame game) {
         this.x = x;
         this.y = y;
-        game.getExplodes().add(this);
+        this.game = game;
     }
 
     public void draw(Graphics g){

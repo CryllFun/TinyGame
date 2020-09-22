@@ -16,7 +16,7 @@ public class Shell implements GameObject{
     private static final int WIDTH=10,HEIGHT=10;
     private boolean isLive = true;//默认炮弹存活
     private Panel panel;
-    private int step = 2;
+    private int step = 5;
 
 
     public Shell(int x, int y, Panel panel) {
@@ -41,18 +41,22 @@ public class Shell implements GameObject{
     }
     //击中
     private void hit() {
-        PanelGame game = panel.getGame();
-        List<Panel> enemyPanels = game.getPanels();
-        for (Panel panel1 :enemyPanels) {
-            if(panel.isEnemy() == panel1.isEnemy()){
-                continue;
+        try {
+            PanelGame game = panel.getGame();
+            List<Panel> enemyPanels = game.getPanels();
+            for (Panel panel1 :enemyPanels) {
+                if(panel.isEnemy() == panel1.isEnemy()){
+                    continue;
+                }
+                //击中后，发生爆炸，炮弹销毁，飞机销毁
+                if(Util.isHit(this,panel1)){
+                    this.destroy();
+                    panel1.destroy();
+                    game.getExplodes().add(new Explode(this.x,this.y,game));
+                }
             }
-            //击中后，发生爆炸，炮弹销毁，飞机销毁
-            if(Util.isHit(this,panel1)){
-                this.destroy();
-                panel1.destroy();
-                new Explode(this.x,this.y,game);
-            }
+        } catch (Exception e) {
+
         }
     }
     //子弹移动
