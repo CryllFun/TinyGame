@@ -40,7 +40,8 @@ public class PanelGame extends Frame implements Serializable {
     private int killEnemyCount = 0;
     //死亡次数
     private int deadCount = 0;
-    public PanelGame(int width,int height){
+    public PanelGame(String title,int width,int height){
+        super(title);
         this.setSize(width,height);
         this.setLocation(500,100);
         this.addWindowListener(new WindowAdapter() {

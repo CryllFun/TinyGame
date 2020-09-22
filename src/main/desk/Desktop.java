@@ -32,7 +32,7 @@ public class Desktop extends JFrame implements Serializable {
         desktop = new JDesktopPane();
         System.out.println("成功启动桌面！");
         setBackground(width,height,bgPath);
-
+        //添加桌面程序，双击打开程序
         setAppButton("notebook","/lib/notebook.jpg",new int[]{20,88,48,38});
 
         setAppButton("panel","/lib/panel.jpg",new int[]{20,156,48,48});

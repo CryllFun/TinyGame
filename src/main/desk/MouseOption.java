@@ -88,7 +88,7 @@ public class MouseOption extends MouseAdapter {
                     break;
                 case "panel" :
                     System.out.println("启动飞机大战游戏");
-                    new PanelGame(900,600);
+                    new PanelGame("飞机大战",900,600);
                     break;
 
                 case "sunModel" :

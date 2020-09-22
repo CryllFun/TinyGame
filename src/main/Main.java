@@ -9,7 +9,6 @@ import main.desk.Desktop;
  */
 public class Main {
     public static void main(String[] args) {
-        Desktop parent = new Desktop("桌面");
-        
+        new Desktop("桌面");
     }
 }
